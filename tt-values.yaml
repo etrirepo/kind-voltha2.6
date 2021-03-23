@@ -22,7 +22,7 @@ onos:
         "enableDhcpOnNni": "true",
         "defaultTechProfileId": "64",
         "enableIgmpOnNni": "true",
-        "enableEapol": "false",
+        "enableEapol": "true",
         "enableDhcpV6": "false",
         "enableDhcpV4": "true"
       }

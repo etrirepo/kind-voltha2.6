@@ -1,0 +1,75 @@
+message ofp_oxm_ofb_field {
+    oxm_ofb_field_types type = 1;
+    bool has_mask = 2;
+    oneof value {
+        uint32 port = 3; /* Used for OFPXMT_OFB_IN_PORT */
+        uint32 physical_port = 4; /* Used for OFPXMT_OF_IN_PHY_PORT */
+        uint64 table_metadata = 5; /* Used for OFPXMT_OFB_METADATA */
+        bytes eth_dst = 6; /* Used for OFPXMT_OFB_ETH_DST (exactly 6 bytes) */
+        bytes eth_src = 7; /* Used for OFPXMT_OFB_ETH_SRC (exactly 6 bytes) */
+        uint32 eth_type = 8; /* Used for OFPXMT_OFB_ETH_TYPE */
+        uint32 vlan_vid = 9; /* Used for OFPXMT_OFB_VLAN_VID */
+        uint32 vlan_pcp = 10; /* Used for OFPXMT_OFB_VLAN_PCP */
+        uint32 ip_dscp = 11; /* Used for OFPXMT_OFB_IP_DSCP */
+        uint32 ip_ecn = 12; /* Used for OFPXMT_OFB_IP_ECN */
+        uint32 ip_proto = 13; /* Used for OFPXMT_OFB_IP_PROTO */
+        uint32 ipv4_src = 14; /* Used for OFPXMT_OFB_IPV4_SRC */
+        uint32 ipv4_dst = 15; /* Used for OFPXMT_OFB_IPV4_DST */
+        uint32 tcp_src = 16; /* Used for OFPXMT_OFB_TCP_SRC */
+        uint32 tcp_dst = 17; /* Used for OFPXMT_OFB_TCP_DST */
+        uint32 udp_src = 18; /* Used for OFPXMT_OFB_UDP_SRC */
+        uint32 udp_dst = 19; /* Used for OFPXMT_OFB_UDP_DST */
+        uint32 sctp_src = 20; /* Used for OFPXMT_OFB_SCTP_SRC */
+        uint32 sctp_dst = 21; /* Used for OFPXMT_OFB_SCTP_DST */
+        uint32 icmpv4_type = 22; /* Used for OFPXMT_OFB_ICMPV4_TYPE */
+        uint32 icmpv4_code = 23; /* Used for OFPXMT_OFB_ICMPV4_CODE */
+        uint32 arp_op = 24; /* Used for OFPXMT_OFB_ARP_OP */
+        uint32 arp_spa = 25; /* For OFPXMT_OFB_ARP_SPA */
+        uint32 arp_tpa = 26; /* For OFPXMT_OFB_ARP_TPA */
+        bytes arp_sha = 27; /* For OFPXMT_OFB_ARP_SHA (6 bytes) */
+        bytes arp_tha = 28; /* For OFPXMT_OFB_ARP_THA (6 bytes) */
+        bytes ipv6_src = 29; /* For OFPXMT_OFB_IPV6_SRC */
+        bytes ipv6_dst = 30; /* For OFPXMT_OFB_IPV6_DST */
+        uint32 ipv6_flabel = 31; /* For OFPXMT_OFB_IPV6_FLABEL */
+        uint32 icmpv6_type = 32; /* For OFPXMT_OFB_ICMPV6_TYPE */
+        uint32 icmpv6_code = 33; /* For OFPXMT_OFB_ICMPV6_CODE */
+        bytes ipv6_nd_target = 34; /* For OFPXMT_OFB_IPV6_ND_TARGET */
+        bytes ipv6_nd_ssl = 35; /* For OFPXMT_OFB_IPV6_ND_SLL */
+        bytes ipv6_nd_tll = 36; /* For OFPXMT_OFB_IPV6_ND_TLL */
+        uint32 mpls_label = 37; /* For OFPXMT_OFB_MPLS_LABEL */
+        uint32 mpls_tc = 38; /* For OFPXMT_OFB_MPLS_TC */
+        uint32 mpls_bos = 39; /* For OFPXMT_OFB_MPLS_BOS */
+        uint32 pbb_isid = 40; /* For OFPXMT_OFB_PBB_ISID */
+        uint64 tunnel_id = 41; /* For OFPXMT_OFB_TUNNEL_ID */
+        uint32 ipv6_exthdr = 42; /* For OFPXMT_OFB_IPV6_EXTHDR */
+
+    }
+
+    /* Optional mask values (must be present when has_mask is true */
+    oneof mask {
+        uint64 table_metadata_mask = 105; /* For OFPXMT_OFB_METADATA */
+
+        bytes eth_dst_mask = 106; /* For OFPXMT_OFB_ETH_DST (exactly 6 bytes)*/
+        bytes eth_src_mask = 107; /* For OFPXMT_OFB_ETH_SRC (exactly 6 bytes)*/
+
+        uint32 vlan_vid_mask = 109; /* For OFPXMT_OFB_VLAN_VID */
+
+        uint32 ipv4_src_mask = 114; /* For OFPXMT_OFB_IPV4_SRC */
+        uint32 ipv4_dst_mask = 115; /* For OFPXMT_OFB_IPV4_DST */
+
+        uint32 arp_spa_mask = 125; /* For OFPXMT_OFB_ARP_SPA */
+        uint32 arp_tpa_mask = 126; /* For OFPXMT_OFB_ARP_TPA */
+
+        bytes ipv6_src_mask = 129; /* For OFPXMT_OFB_IPV6_SRC */
+        bytes ipv6_dst_mask = 130; /* For OFPXMT_OFB_IPV6_DST */
+
+        uint32 ipv6_flabel_mask = 131; /* For OFPXMT_OFB_IPV6_FLABEL */
+
+        uint32 pbb_isid_mask = 140; /* For OFPXMT_OFB_PBB_ISID */
+
+        uint64 tunnel_id_mask = 141; /* For OFPXMT_OFB_TUNNEL_ID */
+
+        uint32 ipv6_exthdr_mask = 142; /* For OFPXMT_OFB_IPV6_EXTHDR */
+    }
+
+}

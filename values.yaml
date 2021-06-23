@@ -60,9 +60,9 @@ images:
 # provided as a conveinence if you would like to override on a per image
 # basis. If you are using the defaults, master, or voltha-2.1 branch there
 # is no need to utilize this list.
-#  adapter_open_olt:
-#    repository: voltha/voltha-openolt-adapter
-#    tag: 2.1.1
+  adapter_open_olt:
+    repository: etrirepository/voltha-openolt-adapter
+    tag: makecli
 #  adapter_open_onu:
 #    repository: voltha/voltha-openonu-adapter
 #    tag: 2.1.0
@@ -75,12 +75,12 @@ images:
 #  bbsim:
 #    repository: voltha/bbsim
 #    tag: master
-#  ofagent:
-#    repository: voltha/voltha-ofagent-go
-#    tag: master
-#  rw_core:
-#    repository: voltha/voltha-rw-core
-#    tag: 2.1.1
+  ofagent:
+    repository: etrirepository/voltha-ofagent-go
+    tag: makecli
+  rw_core:
+    repository: etrirepository/voltha-rw-core
+    tag: makecli
 # START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
 # Go implementation of the openonu-adapter
 #  adapter_open_onu_go:

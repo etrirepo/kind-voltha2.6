@@ -45,14 +45,16 @@ use_openonu_adapter_go: true
 
 images:
   onos:
-    repository: voltha/voltha-onos
+    #repository: voltha/voltha-onos
+    repository: etrirepository/voltha-onos
     # IMAGE_SELECTION
     # ---------------
     # The helm chart used to deploy ONOS is the public ONOS helm chart so,
     # there is a need to specify the exact image repository and image tag.
     # If you would like to use the "master", "voltha-2.1", or other image
     # just replace the "tag" value below.
-    tag: master
+#    tag: master
+    tag: makecli
 
 # IMAGE_SELECTION
 # ---------------
@@ -62,7 +64,7 @@ images:
 # is no need to utilize this list.
   adapter_open_olt:
     repository: etrirepository/voltha-openolt-adapter
-    tag: makecli
+    tag: cliTest
 #  adapter_open_onu:
 #    repository: voltha/voltha-openonu-adapter
 #    tag: 2.1.0
@@ -80,7 +82,7 @@ images:
     tag: makecli
   rw_core:
     repository: etrirepository/voltha-rw-core
-    tag: makecli
+    tag: dev
 # START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
 # Go implementation of the openonu-adapter
 #  adapter_open_onu_go:

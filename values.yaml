@@ -64,7 +64,7 @@ images:
 # is no need to utilize this list.
   adapter_open_olt:
     repository: etrirepository/voltha-openolt-adapter
-    tag: cliTest
+    tag: handler
 #  adapter_open_onu:
 #    repository: voltha/voltha-openonu-adapter
 #    tag: 2.1.0
@@ -82,7 +82,7 @@ images:
     tag: makecli
   rw_core:
     repository: etrirepository/voltha-rw-core
-    tag: dev
+    tag: handler
 # START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
 # Go implementation of the openonu-adapter
 #  adapter_open_onu_go:

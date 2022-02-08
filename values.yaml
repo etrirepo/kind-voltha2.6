@@ -85,9 +85,9 @@ images:
     tag: handler
 # START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
 # Go implementation of the openonu-adapter
-#  adapter_open_onu_go:
-#    repository: voltha-openonu-adapter-go
-#    tag: master
+  adapter_open_onu_go:
+    repository: etrirepository/voltha-openonu-adapter-go
+    tag: flowCheck
 # END_OPENONU_ADAPTER_GO
 
 etcd:
@@ -201,13 +201,14 @@ sadis:
 elasticsearch:
   replicas: 1
   minimumMasterNodes: 1
+  clusterHealthCheckParams: 'wait_for_status=yellow&timeout=1s'
   # set cpu and memory configuration
   resources:
     requests:
-      cpu: "400m"
+      cpu: "1"
       memory: "1Gi"
     limits:
-      cpu: "1000m"
+      cpu: "2"
       memory: "2Gi"
   # setup persistence volume.By default persistence volumeclaim is disabled
   volumeClaimTemplate:
@@ -218,12 +219,14 @@ elasticsearch:
   persistence:
     enabled: false
   # setup cluster health status as yellow
-  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
-
+  
 # kibana config
 # ref: https://github.com/elastic/helm-charts/tree/7.7.0/kibana
 kibana:
   elasticsearchHosts: "http://elasticsearch-master:9200"
+  healthCheckPath: "/api/status"
+  server.ssl:
+    enabled: false
 
 # fluentd-elasticsearch config
 # ref: https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch

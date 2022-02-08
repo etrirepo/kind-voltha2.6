@@ -1291,9 +1291,9 @@ if [ "$1" == "down" ]; then
             if [ -n "$ADAPT_PODS" ]; then
                 wait_for_pods "$ADAPTER_NS" 0 "not" "Waiting for adapter  PODs to terminate" "$NO_LABEL" "$ADAPT_PODS"
             fi
-            if [ -n "$EFK_PODS" ]; then
-                wait_for_pods "$INFRA_NS" 0 "not" "Waiting for EFK PODs to terminate" "$NO_LABEL" "$EFK_PODS"
-            fi
+            #if [ -n "$EFK_PODS" ]; then
+            #    wait_for_pods "$INFRA_NS" 0 "not" "Waiting for EFK PODs to terminate" "$NO_LABEL" "$EFK_PODS"
+            #fi
             wait_for_pods "$VOLTHA_NS" 0 "not" "Waiting for VOLTHA PODs to terminate" "$NO_LABEL" "$PODS"
         fi
     fi
@@ -2447,7 +2447,8 @@ if [ "$WITH_EFK" == "yes" ]; then
         EXPECT=$((EXPECT + 1)) # for fluentd on the control plan node
     fi
 
-    wait_for_pods - "$INFRA_NS" "$EXPECT" "includes" "Waiting for EFK to start" "$NO_LABEL" "fluentd-* elasticsearch-* kibana-*"
+    #wait_for_pods - "$INFRA_NS" "$EXPECT" "includes" "Waiting for EFK to start" "$NO_LABEL" "fluentd-* elasticsearch-* kibana-*"
+	sleep 300
 
     if [ "$WITH_PORT_FORWARDS" == "yes" ]; then
         bspin - "Forward EFK port $FORWARD"

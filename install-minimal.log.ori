@@ -1,0 +1,1511 @@
+2022. 02. 03. (목) 16:59:23 KST
+PORTS=8181,8101,55555,5022,2379,9092,6060,6061,6062,9200,5601,16686
+OPTIONS
+    NAME                           = minimal
+    ENABLE_ONOS_EXTRANEOUS_RULES   = no
+    WITH_TIMINGS                   = no
+    WITH_BBSIM                     = no
+    WITH_EFK                       = yes
+    WITH_TRACING                   = no
+    WITH_EAPOL                     = yes
+    WITH_DHCP                      = yes
+    WITH_IGMP                      = yes
+    WITH_CHAOS                     = no
+    WITH_ADAPTERS                  = yes
+    WITH_SIM_ADAPTERS              = no
+    WITH_OPEN_ADAPTERS             = yes
+    WITH_PORT_FORWARDS             = yes
+    WITH_PPROF                     = no
+    WITH_INCREMENTAL_EVTO_UPDATE   = no
+    JUST_K8S                       = no
+    JUST_INFRA                     = no
+    DEPLOY_K8S                     = no
+    INSTALL_ONOS_APPS              = no
+    INSTALL_KUBECTL                = yes
+    INSTALL_HELM                   = yes
+    HELM_USE_UPGRADE               = no
+    UPDATE_HELM_REPOS              = yes
+    WAIT_ON_DOWN                   = yes
+    VOLTHA_DOWN_ON_TIMEOUT         = no
+    LEGACY_BBSIM_INDEX             = no
+    SCHEDULE_ON_CONTROL_NODES      = no
+    CONFIG_SADIS                   = external
+    WITH_KAFKA                     = yes
+    WITH_RADIUS                    = yes
+    WITH_ETCD                      = yes
+    WITH_ONOS                      = classic
+    WAIT_TIMEOUT                   = 30m
+    VOLTHA_LOG_LEVEL               = DEBUG
+    VOLTHA_CHART                   = onf/voltha
+    VOLTHA_CHART_VERSION           = 2.7.2
+    VOLTHA_BBSIM_CHART             = onf/bbsim
+    VOLTHA_BBSIM_CHART_VERSION     = 4.1.6
+    BBSIM_SADIS_SERVER_CHART       = onf/bbsim-sadis-server
+    BBSIM_SADIS_SERVER_CHART_VERSION = 0.0.5
+    VOLTHA_TRACING_CHART           = onf/voltha-tracing
+    VOLTHA_TRACING_CHART_VERSION   = latest
+    NUM_OF_BBSIM                   = 1
+    NUM_OF_WORKER_NODES            = 2
+    NUM_OF_CONTROLLER_NODES        = 1
+    NUM_OF_KAFKA                   = 1
+    NUM_OF_ETCD                    = 1
+    ELASTICSEARCH_CHART            = elastic/elasticsearch
+    ELASTICSEARCH_CHART_VERSION    = latest
+    KIBANA_CHART                   = elastic/kibana
+    KIBANA_CHART_VERSION           = latest
+    FLUENTD_ELASTICSEARCH_CHART    = kiwigrid/fluentd-elasticsearch
+    FLUENTD_ELASTICSEARCH_CHART_VERSION = latest
+    NUM_OF_OPENONU                 = 1
+    VOLTHA_ADAPTER_SIM_CHART       = onf/voltha-adapter-simulated
+    VOLTHA_ADAPTER_SIM_CHART_VERSION = latest
+    VOLTHA_ADAPTER_OPEN_OLT_CHART  = onf/voltha-adapter-openolt
+    VOLTHA_ADAPTER_OPEN_OLT_CHART_VERSION = 2.7.1
+    VOLTHA_ADAPTER_OPEN_ONU_CHART  = onf/voltha-adapter-openonu
+    VOLTHA_ADAPTER_OPEN_ONU_CHART_VERSION = 2.6.10
+    ONOS_CHART                     = onf/onos
+    ONOS_CHART_VERSION             = latest
+    ONOS_CLASSIC_CHART             = onos/onos-classic
+    ONOS_CLASSIC_CHART_VERSION     = 0.1.11
+    KAFKA_CHART                    = bitnami/kafka
+    KAFKA_CHART_VERSION            = latest
+    ETCD_CHART                     = bitnami/etcd
+    ETCD_CHART_VERSION             = 5.6.2
+    RADIUS_CHART                   = onf/freeradius
+    RADIUS_CHART_VERSION           = 1.0.2
+    ONOS_API_PORT                  = 8181
+    ONOS_SSH_PORT                  = 8101
+    SADIS_CFG                      = onos-files/onos-sadis-sample.json
+    BBSIM_CFG                      = configs/bbsim-sadis-att.yaml
+    VOLTHA_API_PORT                = 55555
+    VOLTHA_SSH_PORT                = 5022
+    VOLTHA_ETCD_PORT               = 2379
+    ELASTICSEARCH_PORT             = 9200
+    KIBANA_PORT                    = 5601
+    VOLTHA_KAFKA_PORT              = 9092
+    VOLTHA_PPROF_PORT              = 6060
+    OPENOLT_PPROF_PORT             = 6061
+    OFAGENT_PPROF_PORT             = 6062
+    TRACING_GUI_PORT               = 16686
+    VK_RELEASE                     = master
+    KIND_VERSION                   = v0.8.1
+    VOLTCTL_VERSION                = 1.3.1
+    HELM_VERSION                   = v3.2.4
+    NUM_OF_ONOS                    = 1
+    NUM_OF_ATOMIX                  = 0
+    VOLTHA_NS                      = voltha
+    ADAPTER_NS                     = voltha
+    INFRA_NS                       = default
+    BBSIM_NS                       = voltha
+    SADIS_BANDWIDTH_PROFILES       = http://bbsim0.voltha.svc:50074/v2/bandwidthprofiles/%s
+    SADIS_SUBSCRIBERS              = http://bbsim0.voltha.svc:50074/v2/subscribers/%s
+    PF_ADDRESS                     = 0.0.0.0
+INSTALL NAME: minimal
++ helm repo add stable https://kubernetes-charts.storage.googleapis.com
+Error: looks like "https://kubernetes-charts.storage.googleapis.com" is not a valid chart repository or cannot be reached: failed to fetch https://kubernetes-charts.storage.googleapis.com/index.yaml : 403 Forbidden
++ helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com
+Error: looks like "https://kubernetes-charts-incubator.storage.googleapis.com" is not a valid chart repository or cannot be reached: failed to fetch https://kubernetes-charts-incubator.storage.googleapis.com/index.yaml : 403 Forbidden
++ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "elastic" chart repository
+...Successfully got an update from the "bbsim-sadis" chart repository
+...Successfully got an update from the "atomix" chart repository
+...Successfully got an update from the "kiwigrid" chart repository
+...Successfully got an update from the "onos" chart repository
+...Successfully got an update from the "onf" chart repository
+...Successfully got an update from the "bitnami" chart repository
+Update Complete. ⎈ Happy Helming!⎈ 
+Resolved helm charts and versions:
+    onf/voltha:2.7.2
+    onf/bbsim:4.1.6
+    onf/voltha-tracing:1.0.0
+    onf/voltha-adapter-simulated:2.3.0
+    onf/voltha-adapter-openolt:2.7.1
+    onf/voltha-adapter-openonu:2.6.10
+    onf/onos:3.0.2
+    onos/onos-classic:0.1.11
+    bitnami/kafka:15.0.3
+    elastic/elasticsearch:7.16.3
+    elastic/kibana:7.16.3
+    kiwigrid/fluentd-elasticsearch:9.6.2
+    onf/bbsim-sadis-server:0.0.5
+    onf/freeradius:1.0.2
++ helm install -f /tmp/tmp.4QY2Rbgv1S --create-namespace --set auth.rbac.enabled=false,persistence.enabled=false,statefulset.replicaCount=1 --set defaults.log_level=DEBUG --namespace default --version 5.6.2 --set defaults.image_tag=null,images.onos.tag=4.2.0 etcd bitnami/etcd
+NAME: etcd
+LAST DEPLOYED: Thu Feb  3 16:59:40 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+** Please be patient while the chart is being deployed **
+
+etcd can be accessed via port 2379 on the following DNS name from within your cluster:
+
+    etcd.default.svc.cluster.local
+
+To set a key run the following command:
+
+    export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=etcd,app.kubernetes.io/instance=etcd" -o jsonpath="{.items[0].metadata.name}")
+    kubectl exec -it $POD_NAME -- etcdctl put /message Hello
+
+To get a key run the following command:
+
+    export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=etcd,app.kubernetes.io/instance=etcd" -o jsonpath="{.items[0].metadata.name}")
+    kubectl exec -it $POD_NAME -- etcdctl get /message
+
+To connect to your etcd server from outside the cluster execute the following commands:
+
+    kubectl port-forward --namespace default svc/etcd 2379:2379 &
+    echo "etcd URL: http://127.0.0.1:2379"
++ eval 'kill -9  27175'
+++ kill -9 27175
++ helm install -f /tmp/tmp.IQdp4aTvi7 --create-namespace -f /tmp/tmp.VQS2AldGBx --set defaults.log_level=DEBUG --namespace default --set defaults.image_tag=null,images.onos.tag=4.2.0 kafka bitnami/kafka
+NAME: kafka
+LAST DEPLOYED: Thu Feb  3 17:00:57 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: kafka
+CHART VERSION: 15.0.3
+APP VERSION: 3.1.0
+
+** Please be patient while the chart is being deployed **
+
+Kafka can be accessed by consumers via port 9092 on the following DNS name from within your cluster:
+
+    kafka.default.svc.cluster.local
+
+Each Kafka broker can be accessed by producers via port 9092 on the following DNS name(s) from within your cluster:
+
+    kafka-0.kafka-headless.default.svc.cluster.local:9092
+
+To create a pod that you can use as a Kafka client run the following commands:
+
+    kubectl run kafka-client --restart='Never' --image docker.io/bitnami/kafka:3.1.0-debian-10-r8 --namespace default --command -- sleep infinity
+    kubectl exec --tty -i kafka-client --namespace default -- bash
+
+    PRODUCER:
+        kafka-console-producer.sh \
+            
+            --broker-list kafka-0.kafka-headless.default.svc.cluster.local:9092 \
+            --topic test
+
+    CONSUMER:
+        kafka-console-consumer.sh \
+            
+            --bootstrap-server kafka.default.svc.cluster.local:9092 \
+            --topic test \
+            --from-beginning
++ eval 'kill -9  2981'
+++ kill -9 2981
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
++ eval 'kill -9  30705'
+++ kill -9 30705
+---
+# Copyright 2019 Ciena Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# IMAGE SELECTION
+# ---------------
+# By default no defaults are set and the image tags specified in the helm
+# charts will be used. If you would like to use the images generated from the
+# HEAD of the "master" git branches, then uncomment this below block and
+# set "<VALUE>" to "master". Similarly, if you want to use the images
+# generated from the HEAD of the "voltha-2.1" git branches, then uncomment
+# this block and replace "<VALUE>" with "voltha-2.1".
+global:
+  image_tag: master
+  image_pullPolicy: Always
+# defaults is maintained for backward compatibility
+defaults:
+  image_tag: master
+  image_pullPolicy: Always
+
+private_etcd_cluster: false
+private_kafka_cluster: false
+
+# OPENONU-ADAPTER IMPLEMENTATION
+# ------------------------------
+# There are currently two implementations of OPENONU-ADAPTER: the original
+# written in Python and the reimplementation written in Go. The variable
+# `use_openonu_adapter_go` can be set to false to optionally use the old Py
+# implementation. This is done by setting that value to `true`.
+#
+# Along with this change you will also may need to set the Docker image
+# information below (search for START_OPENONU_ADAPTER_GO).
+use_openonu_adapter_go: true
+
+images:
+  onos:
+    #repository: voltha/voltha-onos
+    repository: etrirepository/voltha-onos
+    # IMAGE_SELECTION
+    # ---------------
+    # The helm chart used to deploy ONOS is the public ONOS helm chart so,
+    # there is a need to specify the exact image repository and image tag.
+    # If you would like to use the "master", "voltha-2.1", or other image
+    # just replace the "tag" value below.
+#    tag: master
+    tag: makecli
+
+# IMAGE_SELECTION
+# ---------------
+# Below are a list of all the images utilized by kind-voltha. This list is
+# provided as a conveinence if you would like to override on a per image
+# basis. If you are using the defaults, master, or voltha-2.1 branch there
+# is no need to utilize this list.
+  adapter_open_olt:
+    repository: etrirepository/voltha-openolt-adapter
+    tag: handler
+#  adapter_open_onu:
+#    repository: voltha/voltha-openonu-adapter
+#    tag: 2.1.0
+#  adapter_simulated_olt:
+#    repository: voltha/voltha-adapter-simulated-olt
+#    tag: 2.1.1
+#  adapter_simulated_onu:
+#    repository: voltha/voltha-adapter-simulated-onu
+#    tag: 2.1.1
+#  bbsim:
+#    repository: voltha/bbsim
+#    tag: master
+  ofagent:
+    repository: etrirepository/voltha-ofagent-go
+    tag: makecli
+  rw_core:
+    repository: etrirepository/voltha-rw-core
+    tag: handler
+# START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
+# Go implementation of the openonu-adapter
+  adapter_open_onu_go:
+    repository: etrirepository/voltha-openonu-adapter-go
+    tag: flowCheck
+# END_OPENONU_ADAPTER_GO
+
+etcd:
+  extraEnv:
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "1"
+    - name: ETCD_SNAPSHOT_COUNT
+      value: "100000"
+    - name: ETCD_HEARTBEAT_INTERVAL
+      value: "100"
+    - name: ETCD_ELECTION_TIMEOUT
+      value: "1000"
+    - name: ETCD_MAX_SNAPSHOTS
+      value: "5"
+    - name: ETCD_QUOTA_BACKEND_BYTES
+      value: "0"
+    - name: ETCD_MAX_REQUEST_BYTES
+      value: "1572864"
+    - name: ETCD_GRPC_KEEPALIVE_MIN_TIME
+      value: "5s"
+    - name: ETCD_GRPC_KEEPALIVE_TIMEOUT
+      value: "5s"
+    - name: ETCD_DEBUG
+      value: "false"
+
+kafka:
+  zookeeper:
+    persistence:
+      enabled: false
+  persistence:
+    enabled: false
+  envOverrides:
+    KAFKA_LOG4J_ROOT_LOGLEVEL: ERROR
+    KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+    # yamllint disable-line rule:line-length
+    KAFKA_LOG4J.LOGGERS: "kafka.zookeeper=ERROR,state.change.logger=ERROR,kafka=ERROR,kafka.controller=ERROR"
+    KAFKA_LOG_RETENTION_HOURS: 1
+    KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+# voltha:
+#   fullNameOverride: voltha
+
+# open-olt:
+#   fullNameOverride: voltha-adapter-openolt
+
+# open-onu:
+#   fullNameOverride: voltha-adapter-openonu
+
+onos:
+  image:
+    repository: voltha/voltha-onos
+    tag: master
+    pullPolicy: Always
+  onos_env:
+    - name: POD_IP
+      valueFrom:
+      fieldRef:
+        fieldPath: status.podIP
+    - name: NAMESPACE
+      valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+    - name: ONOS_APPS
+      value: "drivers,openflow-base,hostprovider"
+  apps:
+    - org.onosproject.lldpprovider
+    - org.onosproject.openflow-base
+    - org.onosproject.gui2
+    - org.onosproject.drivers
+    - org.onosproject.mcast
+    - org.opencord.kafka
+    - org.opencord.sadis
+    - org.opencord.dhcpl2relay
+    - org.opencord.igmpproxy
+    - org.opencord.mcast
+    - org.opencord.olt
+    - org.opencord.aaa
+  java_opts: >
+    -XX:+UseG1GC
+    -XX:MaxGCPauseMillis=200
+    -XX:-UseContainerSupport
+    -Dkaraf.log.console=INFO
+    -Dds.lock.timeout.milliseconds=10000
+  # No persistent volume in Atomix to have clean state for each re-deploy of ONOS
+  atomix:
+    persistence:
+      enabled: false
+    java_opts: >
+      -Xmx2G
+      -XX:-UseContainerSupport
+
+# Customization for BBSIM
+bbsim:
+  nni: 1
+  pon: 1
+  onu: 1
+  sadisFormat: "att"
+  kafkaEventTopic: "bbsim"
+  enableEvents: false
+
+# Customization for BBSIM SADIS Servier
+sadis:
+  config:
+    bbsim_sadis_server:
+      sleep_time: 5s
+
+# START EFK Setup to push voltha logs
+# elasticstack config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/elasticsearch
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+  # set cpu and memory configuration
+  resources:
+    requests:
+      cpu: "400m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  # setup persistence volume.By default persistence volumeclaim is disabled
+  volumeClaimTemplate:
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 5Gi
+  persistence:
+    enabled: false
+  # setup cluster health status as yellow
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+# kibana config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/kibana
+kibana:
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+
+# fluentd-elasticsearch config
+# ref: https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch
+fluentd-elasticsearch:
+  elasticsearch:
+    # set elasticsearch host
+    hosts: ["elasticsearch-master:9200"]
+    sslVerify: false
+
+# Increase maxTraces to retain Traces for longer duration
+# But tracing pod will consume more memory
+tracing:
+  maxTraces: 500000
+
+# SHOCK THE MONKEY OR LET LOSE THE DOGS OF WAR
+# The VOLTHA charts have support for adding extra labels to deployments and
+# pods. These extra labels can be used to integrate with other utilities
+# such as kube-monkey to add a bit of chaos to the cluster. Below are some
+# settings that can be uncommented to opt-in VOLTHA deployments/pods to
+# kube-monkey. For example, if you want ALL deployments and pods to opt-in
+# then uncomment the `extra_deployment_labels` and `extra_pod_label` blocks.
+# If you want to be more selected then comment the blocks that pertain to the
+# targets you care about.
+
+# extra_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# extra_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+image:
+  repository: voltha/voltha-onos
+  tag: master
+  pullPolicy: Always
+onos_env:
+  - name: POD_IP
+    valueFrom:
+    fieldRef:
+      fieldPath: status.podIP
+  - name: NAMESPACE
+    valueFrom:
+    fieldRef:
+      fieldPath: metadata.namespace
+  - name: ONOS_APPS
+    value: "drivers,openflow-base,hostprovider"
+apps:
+  - org.onosproject.lldpprovider
+  - org.onosproject.openflow-base
+  - org.onosproject.gui2
+  - org.onosproject.drivers
+  - org.onosproject.mcast
+  - org.opencord.kafka
+  - org.opencord.sadis
+  - org.opencord.dhcpl2relay
+  - org.opencord.igmpproxy
+  - org.opencord.mcast
+  - org.opencord.olt
+  - org.opencord.aaa
+java_opts: >
+  -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:-UseContainerSupport -Dkaraf.log.console=INFO -Dds.lock.timeout.milliseconds=10000
+
+# No persistent volume in Atomix to have clean state for each re-deploy of ONOS
+atomix:
+  persistence:
+    enabled: false
+  java_opts: >
+    -Xmx2G -XX:-UseContainerSupport
+
++ helm install -f /tmp/tmp.N6q6zXMWz0 --create-namespace --set image.pullPolicy=Always,image.repository=etrirepository/voltha-onos,image.tag=4.2.0,replicas=1,atomix.replicas=0 --set defaults.log_level=DEBUG --namespace default --version 0.1.11 --set defaults.image_tag=null,images.onos.tag=4.2.0 onos onos/onos-classic
+NAME: onos
+LAST DEPLOYED: Thu Feb  3 17:01:38 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
++ eval 'kill -9  13783'
+++ kill -9 13783
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ eval 'kill -9  13936'
+++ kill -9 13936
++ mkdir -p ./onos-files
++ curl --fail -sSL --user karaf:karaf -X GET http://127.0.0.1:8181/onos/v1/applications/org.opencord.kafka
++ grep ACTIVE
+curl: (7) Failed to connect to 127.0.0.1 port 8181: Connection refused
++ grep ACTIVE
++ curl --fail -sSL --user karaf:karaf -X GET http://127.0.0.1:8181/onos/v1/applications/org.opencord.kafka
+{"name":"org.opencord.kafka","id":192,"version":"2.5.0","category":"Integration","description":"Integration with Kafka event bus","readme":"Integration with Kafka event bus","origin":"ONF","url":"http://opencord.org","featuresRepo":"mvn:org.opencord/kafka/2.5.0/xml/features","state":"ACTIVE","features":["kafka"],"permissions":[],"requiredApps":[]}
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.jbMifSabXr -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/network/configuration/apps/org.opencord.kafka --data '{"kafka":{"bootstrapServers":"kafka.default.svc:9092"}}'
+RESPONSE CODE: 200
+ERROR CODE: 0
++ curl --fail -sSL --user karaf:karaf -X GET http://127.0.0.1:8181/onos/v1/applications/org.opencord.dhcpl2relay
++ grep ACTIVE
+{"name":"org.opencord.dhcpl2relay","id":194,"version":"2.3.0","category":"default","description":"DHCP L2 Relay Agent Application.","readme":"DHCP L2 Relay Agent Application.","origin":"Open Networking Foundation","url":"http://onosproject.org","featuresRepo":"mvn:org.opencord/dhcpl2relay-app/2.3.0/xml/features","state":"ACTIVE","features":["dhcpl2relay-app"],"permissions":[],"requiredApps":["org.opencord.sadis"]}
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.JIvxppuMRR -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/network/configuration/apps/org.opencord.dhcpl2relay --data @onos-files/onos-dhcpl2relay.json
+RESPONSE CODE: 200
+ERROR CODE: 0
++ curl --fail -sSL --user karaf:karaf -X GET http://127.0.0.1:8181/onos/v1/applications/org.opencord.olt
++ grep ACTIVE
+{"name":"org.opencord.olt","id":190,"version":"4.3.0","category":"Traffic Steering","description":"CORD OLT Access management application","readme":"CORD OLT Access management application","origin":"Open Networking Foundation","url":"http://onosproject.org","featuresRepo":"mvn:org.opencord/olt-app/4.3.0/xml/features","state":"ACTIVE","features":["olt-app"],"permissions":[],"requiredApps":["org.opencord.sadis"]}
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.UNvVbLtsaS -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/configuration/org.opencord.olt.impl.OltFlowService --data '{"enableEapol":true}'
+RESPONSE CODE: 200
+ERROR CODE: 0
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.w0sQq8C7nd -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/configuration/org.opencord.olt.impl.OltFlowService --data '{"enableDhcpOnNni":true}'
+RESPONSE CODE: 200
+ERROR CODE: 0
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.9tdSElLxJV -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/configuration/org.opencord.olt.impl.OltFlowService --data '{"enableIgmpOnNni":true}'
+RESPONSE CODE: 200
+ERROR CODE: 0
+---
+# Copyright 2019 Ciena Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# IMAGE SELECTION
+# ---------------
+# By default no defaults are set and the image tags specified in the helm
+# charts will be used. If you would like to use the images generated from the
+# HEAD of the "master" git branches, then uncomment this below block and
+# set "<VALUE>" to "master". Similarly, if you want to use the images
+# generated from the HEAD of the "voltha-2.1" git branches, then uncomment
+# this block and replace "<VALUE>" with "voltha-2.1".
+global:
+  image_tag: master
+  image_pullPolicy: Always
+# defaults is maintained for backward compatibility
+defaults:
+  image_tag: master
+  image_pullPolicy: Always
+
+private_etcd_cluster: false
+private_kafka_cluster: false
+
+# OPENONU-ADAPTER IMPLEMENTATION
+# ------------------------------
+# There are currently two implementations of OPENONU-ADAPTER: the original
+# written in Python and the reimplementation written in Go. The variable
+# `use_openonu_adapter_go` can be set to false to optionally use the old Py
+# implementation. This is done by setting that value to `true`.
+#
+# Along with this change you will also may need to set the Docker image
+# information below (search for START_OPENONU_ADAPTER_GO).
+use_openonu_adapter_go: true
+
+images:
+  onos:
+    #repository: voltha/voltha-onos
+    repository: etrirepository/voltha-onos
+    # IMAGE_SELECTION
+    # ---------------
+    # The helm chart used to deploy ONOS is the public ONOS helm chart so,
+    # there is a need to specify the exact image repository and image tag.
+    # If you would like to use the "master", "voltha-2.1", or other image
+    # just replace the "tag" value below.
+#    tag: master
+    tag: makecli
+
+# IMAGE_SELECTION
+# ---------------
+# Below are a list of all the images utilized by kind-voltha. This list is
+# provided as a conveinence if you would like to override on a per image
+# basis. If you are using the defaults, master, or voltha-2.1 branch there
+# is no need to utilize this list.
+  adapter_open_olt:
+    repository: etrirepository/voltha-openolt-adapter
+    tag: handler
+#  adapter_open_onu:
+#    repository: voltha/voltha-openonu-adapter
+#    tag: 2.1.0
+#  adapter_simulated_olt:
+#    repository: voltha/voltha-adapter-simulated-olt
+#    tag: 2.1.1
+#  adapter_simulated_onu:
+#    repository: voltha/voltha-adapter-simulated-onu
+#    tag: 2.1.1
+#  bbsim:
+#    repository: voltha/bbsim
+#    tag: master
+  ofagent:
+    repository: etrirepository/voltha-ofagent-go
+    tag: makecli
+  rw_core:
+    repository: etrirepository/voltha-rw-core
+    tag: handler
+# START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
+# Go implementation of the openonu-adapter
+  adapter_open_onu_go:
+    repository: etrirepository/voltha-openonu-adapter-go
+    tag: flowCheck
+# END_OPENONU_ADAPTER_GO
+
+etcd:
+  extraEnv:
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "1"
+    - name: ETCD_SNAPSHOT_COUNT
+      value: "100000"
+    - name: ETCD_HEARTBEAT_INTERVAL
+      value: "100"
+    - name: ETCD_ELECTION_TIMEOUT
+      value: "1000"
+    - name: ETCD_MAX_SNAPSHOTS
+      value: "5"
+    - name: ETCD_QUOTA_BACKEND_BYTES
+      value: "0"
+    - name: ETCD_MAX_REQUEST_BYTES
+      value: "1572864"
+    - name: ETCD_GRPC_KEEPALIVE_MIN_TIME
+      value: "5s"
+    - name: ETCD_GRPC_KEEPALIVE_TIMEOUT
+      value: "5s"
+    - name: ETCD_DEBUG
+      value: "false"
+
+kafka:
+  zookeeper:
+    persistence:
+      enabled: false
+  persistence:
+    enabled: false
+  envOverrides:
+    KAFKA_LOG4J_ROOT_LOGLEVEL: ERROR
+    KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+    # yamllint disable-line rule:line-length
+    KAFKA_LOG4J.LOGGERS: "kafka.zookeeper=ERROR,state.change.logger=ERROR,kafka=ERROR,kafka.controller=ERROR"
+    KAFKA_LOG_RETENTION_HOURS: 1
+    KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+# voltha:
+#   fullNameOverride: voltha
+
+# open-olt:
+#   fullNameOverride: voltha-adapter-openolt
+
+# open-onu:
+#   fullNameOverride: voltha-adapter-openonu
+
+onos:
+  image:
+    repository: voltha/voltha-onos
+    tag: master
+    pullPolicy: Always
+  onos_env:
+    - name: POD_IP
+      valueFrom:
+      fieldRef:
+        fieldPath: status.podIP
+    - name: NAMESPACE
+      valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+    - name: ONOS_APPS
+      value: "drivers,openflow-base,hostprovider"
+  apps:
+    - org.onosproject.lldpprovider
+    - org.onosproject.openflow-base
+    - org.onosproject.gui2
+    - org.onosproject.drivers
+    - org.onosproject.mcast
+    - org.opencord.kafka
+    - org.opencord.sadis
+    - org.opencord.dhcpl2relay
+    - org.opencord.igmpproxy
+    - org.opencord.mcast
+    - org.opencord.olt
+    - org.opencord.aaa
+  java_opts: >
+    -XX:+UseG1GC
+    -XX:MaxGCPauseMillis=200
+    -XX:-UseContainerSupport
+    -Dkaraf.log.console=INFO
+    -Dds.lock.timeout.milliseconds=10000
+  # No persistent volume in Atomix to have clean state for each re-deploy of ONOS
+  atomix:
+    persistence:
+      enabled: false
+    java_opts: >
+      -Xmx2G
+      -XX:-UseContainerSupport
+
+# Customization for BBSIM
+bbsim:
+  nni: 1
+  pon: 1
+  onu: 1
+  sadisFormat: "att"
+  kafkaEventTopic: "bbsim"
+  enableEvents: false
+
+# Customization for BBSIM SADIS Servier
+sadis:
+  config:
+    bbsim_sadis_server:
+      sleep_time: 5s
+
+# START EFK Setup to push voltha logs
+# elasticstack config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/elasticsearch
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+  # set cpu and memory configuration
+  resources:
+    requests:
+      cpu: "400m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  # setup persistence volume.By default persistence volumeclaim is disabled
+  volumeClaimTemplate:
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 5Gi
+  persistence:
+    enabled: false
+  # setup cluster health status as yellow
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+# kibana config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/kibana
+kibana:
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+
+# fluentd-elasticsearch config
+# ref: https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch
+fluentd-elasticsearch:
+  elasticsearch:
+    # set elasticsearch host
+    hosts: ["elasticsearch-master:9200"]
+    sslVerify: false
+
+# Increase maxTraces to retain Traces for longer duration
+# But tracing pod will consume more memory
+tracing:
+  maxTraces: 500000
+
+# SHOCK THE MONKEY OR LET LOSE THE DOGS OF WAR
+# The VOLTHA charts have support for adding extra labels to deployments and
+# pods. These extra labels can be used to integrate with other utilities
+# such as kube-monkey to add a bit of chaos to the cluster. Below are some
+# settings that can be uncommented to opt-in VOLTHA deployments/pods to
+# kube-monkey. For example, if you want ALL deployments and pods to opt-in
+# then uncomment the `extra_deployment_labels` and `extra_pod_label` blocks.
+# If you want to be more selected then comment the blocks that pertain to the
+# targets you care about.
+
+# extra_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# extra_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
++ helm install -f /tmp/tmp.6gfT3xznFO --create-namespace --set defaults.log_level=DEBUG --namespace default --version 1.0.2 --set defaults.image_tag=null,images.onos.tag=4.2.0 radius onf/freeradius
+NAME: radius
+LAST DEPLOYED: Thu Feb  3 17:02:47 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
++ curl --fail -sSL --user karaf:karaf -X POST http://127.0.0.1:8181/onos/v1/network/configuration/apps/org.opencord.aaa -H Content-type:application/json -d@-
++ sed -e s/:RADIUS_SVC:/radius-freeradius.default.svc/g -e s/:RADIUS_PORT:/1812/ onos-files/onos-aaa.json
++ kubectl -n default delete --ignore-not-found configmap kube-config
++ kubectl -n default create configmap kube-config --from-file=kube_config=/home/delta/.kube/config
+configmap/kube-config created
+---
+# Copyright 2019 Ciena Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# IMAGE SELECTION
+# ---------------
+# By default no defaults are set and the image tags specified in the helm
+# charts will be used. If you would like to use the images generated from the
+# HEAD of the "master" git branches, then uncomment this below block and
+# set "<VALUE>" to "master". Similarly, if you want to use the images
+# generated from the HEAD of the "voltha-2.1" git branches, then uncomment
+# this block and replace "<VALUE>" with "voltha-2.1".
+global:
+  image_tag: master
+  image_pullPolicy: Always
+# defaults is maintained for backward compatibility
+defaults:
+  image_tag: master
+  image_pullPolicy: Always
+
+private_etcd_cluster: false
+private_kafka_cluster: false
+
+# OPENONU-ADAPTER IMPLEMENTATION
+# ------------------------------
+# There are currently two implementations of OPENONU-ADAPTER: the original
+# written in Python and the reimplementation written in Go. The variable
+# `use_openonu_adapter_go` can be set to false to optionally use the old Py
+# implementation. This is done by setting that value to `true`.
+#
+# Along with this change you will also may need to set the Docker image
+# information below (search for START_OPENONU_ADAPTER_GO).
+use_openonu_adapter_go: true
+
+images:
+  onos:
+    #repository: voltha/voltha-onos
+    repository: etrirepository/voltha-onos
+    # IMAGE_SELECTION
+    # ---------------
+    # The helm chart used to deploy ONOS is the public ONOS helm chart so,
+    # there is a need to specify the exact image repository and image tag.
+    # If you would like to use the "master", "voltha-2.1", or other image
+    # just replace the "tag" value below.
+#    tag: master
+    tag: makecli
+
+# IMAGE_SELECTION
+# ---------------
+# Below are a list of all the images utilized by kind-voltha. This list is
+# provided as a conveinence if you would like to override on a per image
+# basis. If you are using the defaults, master, or voltha-2.1 branch there
+# is no need to utilize this list.
+  adapter_open_olt:
+    repository: etrirepository/voltha-openolt-adapter
+    tag: handler
+#  adapter_open_onu:
+#    repository: voltha/voltha-openonu-adapter
+#    tag: 2.1.0
+#  adapter_simulated_olt:
+#    repository: voltha/voltha-adapter-simulated-olt
+#    tag: 2.1.1
+#  adapter_simulated_onu:
+#    repository: voltha/voltha-adapter-simulated-onu
+#    tag: 2.1.1
+#  bbsim:
+#    repository: voltha/bbsim
+#    tag: master
+  ofagent:
+    repository: etrirepository/voltha-ofagent-go
+    tag: makecli
+  rw_core:
+    repository: etrirepository/voltha-rw-core
+    tag: handler
+# START_OPENONU_ADAPTER_GO - Uncomment the following block to use the
+# Go implementation of the openonu-adapter
+  adapter_open_onu_go:
+    repository: etrirepository/voltha-openonu-adapter-go
+    tag: flowCheck
+# END_OPENONU_ADAPTER_GO
+
+etcd:
+  extraEnv:
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "1"
+    - name: ETCD_SNAPSHOT_COUNT
+      value: "100000"
+    - name: ETCD_HEARTBEAT_INTERVAL
+      value: "100"
+    - name: ETCD_ELECTION_TIMEOUT
+      value: "1000"
+    - name: ETCD_MAX_SNAPSHOTS
+      value: "5"
+    - name: ETCD_QUOTA_BACKEND_BYTES
+      value: "0"
+    - name: ETCD_MAX_REQUEST_BYTES
+      value: "1572864"
+    - name: ETCD_GRPC_KEEPALIVE_MIN_TIME
+      value: "5s"
+    - name: ETCD_GRPC_KEEPALIVE_TIMEOUT
+      value: "5s"
+    - name: ETCD_DEBUG
+      value: "false"
+
+kafka:
+  zookeeper:
+    persistence:
+      enabled: false
+  persistence:
+    enabled: false
+  envOverrides:
+    KAFKA_LOG4J_ROOT_LOGLEVEL: ERROR
+    KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+    # yamllint disable-line rule:line-length
+    KAFKA_LOG4J.LOGGERS: "kafka.zookeeper=ERROR,state.change.logger=ERROR,kafka=ERROR,kafka.controller=ERROR"
+    KAFKA_LOG_RETENTION_HOURS: 1
+    KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+# voltha:
+#   fullNameOverride: voltha
+
+# open-olt:
+#   fullNameOverride: voltha-adapter-openolt
+
+# open-onu:
+#   fullNameOverride: voltha-adapter-openonu
+
+onos:
+  image:
+    repository: voltha/voltha-onos
+    tag: master
+    pullPolicy: Always
+  onos_env:
+    - name: POD_IP
+      valueFrom:
+      fieldRef:
+        fieldPath: status.podIP
+    - name: NAMESPACE
+      valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+    - name: ONOS_APPS
+      value: "drivers,openflow-base,hostprovider"
+  apps:
+    - org.onosproject.lldpprovider
+    - org.onosproject.openflow-base
+    - org.onosproject.gui2
+    - org.onosproject.drivers
+    - org.onosproject.mcast
+    - org.opencord.kafka
+    - org.opencord.sadis
+    - org.opencord.dhcpl2relay
+    - org.opencord.igmpproxy
+    - org.opencord.mcast
+    - org.opencord.olt
+    - org.opencord.aaa
+  java_opts: >
+    -XX:+UseG1GC
+    -XX:MaxGCPauseMillis=200
+    -XX:-UseContainerSupport
+    -Dkaraf.log.console=INFO
+    -Dds.lock.timeout.milliseconds=10000
+  # No persistent volume in Atomix to have clean state for each re-deploy of ONOS
+  atomix:
+    persistence:
+      enabled: false
+    java_opts: >
+      -Xmx2G
+      -XX:-UseContainerSupport
+
+# Customization for BBSIM
+bbsim:
+  nni: 1
+  pon: 1
+  onu: 1
+  sadisFormat: "att"
+  kafkaEventTopic: "bbsim"
+  enableEvents: false
+
+# Customization for BBSIM SADIS Servier
+sadis:
+  config:
+    bbsim_sadis_server:
+      sleep_time: 5s
+
+# START EFK Setup to push voltha logs
+# elasticstack config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/elasticsearch
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+  # set cpu and memory configuration
+  resources:
+    requests:
+      cpu: "400m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  # setup persistence volume.By default persistence volumeclaim is disabled
+  volumeClaimTemplate:
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 5Gi
+  persistence:
+    enabled: false
+  # setup cluster health status as yellow
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+# kibana config
+# ref: https://github.com/elastic/helm-charts/tree/7.7.0/kibana
+kibana:
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+
+# fluentd-elasticsearch config
+# ref: https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch
+fluentd-elasticsearch:
+  elasticsearch:
+    # set elasticsearch host
+    hosts: ["elasticsearch-master:9200"]
+    sslVerify: false
+
+# Increase maxTraces to retain Traces for longer duration
+# But tracing pod will consume more memory
+tracing:
+  maxTraces: 500000
+
+# SHOCK THE MONKEY OR LET LOSE THE DOGS OF WAR
+# The VOLTHA charts have support for adding extra labels to deployments and
+# pods. These extra labels can be used to integrate with other utilities
+# such as kube-monkey to add a bit of chaos to the cluster. Below are some
+# settings that can be uncommented to opt-in VOLTHA deployments/pods to
+# kube-monkey. For example, if you want ALL deployments and pods to opt-in
+# then uncomment the `extra_deployment_labels` and `extra_pod_label` blocks.
+# If you want to be more selected then comment the blocks that pertain to the
+# targets you care about.
+
+# extra_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# extra_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# rw_core_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# ofagent_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# openonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simolt_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_deployment_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+#
+# simonu_pod_labels:
+#   kube-monkey/enabled: enabled
+#   kube-monkey/identifier: monkey-victim
+#   kube-monkey/mtbf: 1
+#   kube-monkey/kill-mode: fixed
+#   kube-monkey/kill-value: 1
+config:
+  bbsim_sadis_server:
+    sleep_time: 5s
++ helm install -f /tmp/tmp.ie6RKKAT7n --create-namespace --set defaults.image_tag=null,images.onos.tag=4.2.0 --set defaults.log_level=DEBUG --namespace default --version 0.0.5 --set defaults.image_tag=null,images.onos.tag=4.2.0 bbsim-sadis-server onf/bbsim-sadis-server
+NAME: bbsim-sadis-server
+LAST DEPLOYED: Thu Feb  3 17:02:55 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
++ curl -sSL --user karaf:karaf -w '%{http_code}' -o /tmp/tmp.puFkuzXj3H -X POST --fail -H Content-Type:application/json http://127.0.0.1:8181/onos/v1/network/configuration/apps/org.opencord.sadis --data '{"sadis":{"integration":{"url":"http://bbsim-sadis-server.default.svc:58080/subscribers/%s","cache":{"enabled":true,"maxsize":50,"ttl":"PT1m"}}},"bandwidthprofile":{"integration":{"url":"http://bbsim-sadis-server.default.svc:58080/profiles/%s","cache":{"enabled":true,"maxsize":50,"ttl":"PT1m"}}}}'
+RESPONSE CODE: 200
+ERROR CODE: 0
++ helm install -f /tmp/tmp.NstIihej3U --create-namespace --set defaults.log_level=DEBUG --namespace default --set defaults.image_tag=null,images.onos.tag=4.2.0 elasticsearch elastic/elasticsearch
+NAME: elasticsearch
+LAST DEPLOYED: Thu Feb  3 17:03:04 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Watch all cluster members come up.
+  $ kubectl get pods --namespace=default -l app=elasticsearch-master -w2. Test cluster health using Helm test.
+  $ helm --namespace=default test elasticsearch
++ helm install -f /tmp/tmp.8TGUqHFOFK --create-namespace --set defaults.log_level=DEBUG --namespace default --set defaults.image_tag=null,images.onos.tag=4.2.0 kibana elastic/kibana
+NAME: kibana
+LAST DEPLOYED: Thu Feb  3 17:03:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
++ helm install -f /tmp/tmp.sXIySrZMQr --create-namespace --set defaults.log_level=DEBUG --namespace default --set defaults.image_tag=null,images.onos.tag=4.2.0 fluentd kiwigrid/fluentd-elasticsearch
+WARNING: This chart is deprecated
+NAME: fluentd
+LAST DEPLOYED: Thu Feb  3 17:03:08 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. To verify that Fluentd has started, run:
+
+  kubectl --namespace=default get pods -l "app.kubernetes.io/name=fluentd-elasticsearch,app.kubernetes.io/instance=fluentd"
+
+THIS APPLICATION CAPTURES ALL CONSOLE OUTPUT AND FORWARDS IT TO elasticsearch . Anything that might be identifying,
+including things like IP addresses, container images, and object names will NOT be anonymized.
